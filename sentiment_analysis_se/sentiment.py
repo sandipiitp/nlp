@@ -8,18 +8,17 @@ Created on Sat Jul 02 11:23:43 2016
 #importing modules
 import pandas as pd
 from preprocessing import clean 
-from sklearn.feature_extraction.text import TFIDFVectorizer
+from feature_extract import feature_class
 
 #reading data
-training_data=pd.read_csv("train.txt",header=0,sep='\t')
+training_data=pd.read_csv("C:/Sandip_Debjani/Sandip/Git/program/data/Sem_Eval/train.txt",header=0,sep='\t')
 
-#preprocessing
-
-#creating object for clean
+#creating object for clean,feature generation,
 cl=clean()
+ft=feature_class()
 
-for i in range(0,len(training_data['tweet'])):
-   prp=cl.preprocess(training_data['tweet'][i])
+#preprocess
+preprocessed=cl.preprocess(training_data['tweet'])
+features=ft.feature_function(preprocessed)
+print features
 
-#vectorization and feature extraction
-feature_extract=TfidfVectorizer(analyzer="word",ngram_range=(1,6),max_features=3000,max_df=1.0,min_df=1)

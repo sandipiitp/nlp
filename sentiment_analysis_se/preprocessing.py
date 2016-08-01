@@ -13,19 +13,24 @@ from nltk.corpus import stopwords
 class clean():
     #functions for preprocessing    
     def preprocess(self,data):
-	    #auxiliary array
-		aux=[]
-        #tokenization and lower case conversion
-		tokens=nltk.word_tokenize(data.lower())
-		#removing all except letters
-		rm_all =[re.sub("[^a-zA-Z]"," ",x) for x in tokens]
-		#removing stopwords
-		rm_stopw=[x for x in rm_all if x not in stopwords.words("english")]
-		#removing empty string
-		rm_n=filter(lambda x: x!=(" " or "  "),rm_stopw)
-		#making sentence
-		aux.append(" ".join(rm_n))
-		#returning sentence
-		return aux
+       #all tweets
+       all_data=[]
+       
+       for i in range(0,len(data)):
+                 #auxiliary array
+                 aux=[]
+                 #tokenization and lower case conversion
+                 tokens=nltk.word_tokenize(data[i].lower())
+                 #removing all except letters
+                 rm_all =[re.sub("[^a-zA-Z]"," ",x) for x in tokens]
+                 #removing stopwords
+                 rm_stopw=[x for x in rm_all if x not in stopwords.words("english")]
+                 #removing empty string
+                 rm_n=filter(lambda x: x!=(" " or "  "),rm_stopw)
+                 #making sentence
+                 all_data.append(" ".join(rm_n))
+                
+       #returning tweets
+       return all_data
 		
                

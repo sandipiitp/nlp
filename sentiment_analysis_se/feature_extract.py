@@ -13,5 +13,6 @@ class feature_class():
     def feature_function(self, data):
         cv=CountVectorizer()
         features=cv.fit_transform(data)
+        features=features.toarray()
         return features        
         

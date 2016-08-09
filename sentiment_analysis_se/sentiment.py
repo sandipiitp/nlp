@@ -22,7 +22,7 @@ clf=classification()
 
 #preprocess
 preprocessed_train=cl.preprocess(training_data['tweet'])
-preprocessed_test=cl.preprocess(test_data['tweet'])
-features=ft.feature_function(preprocessed_train)
-clf.model_svm()
-
+preprocessed_test=cl.preprocess(training_data['tweet'])
+features_train,features_test=ft.feature_function(preprocessed_train,preprocessed_test)
+result=clf.model_svm(features_train,list(training_data['polarity']),features_test)
+print result

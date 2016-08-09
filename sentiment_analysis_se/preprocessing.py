@@ -6,7 +6,6 @@ Created on Sun Jul 17 11:37:45 2016
 #importing module 
 import nltk
 import re
-from nltk import word_tokenize
 from nltk.corpus import stopwords
 
 #preprocess
@@ -17,8 +16,7 @@ class clean():
        all_data=[]
        
        for i in range(0,len(data)):
-                 #auxiliary array
-                 aux=[]
+
                  #tokenization and lower case conversion
                  tokens=nltk.word_tokenize(data[i].lower())
                  #removing all except letters
